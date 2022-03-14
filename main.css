@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+
+.v-center {
+	margin-top: 30vh;
+	display: block;
+	float: none;
+}
+
+body {
+	opacity: 0%;
+	background-color: #2b2b2b;
+	color: rgb(212, 212, 212);
+	visibility: hidden;
+	font-family: monospace;
+}
+
+.in_animation {
+	visibility: visible;
+	opacity: 100%;
+	transition: visibility 2s 0s,
+		opacity 2s cubic-bezier(0.0, 0.0, 0.1, 0.0);
+}
+
+.out_animation {
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s 2s, opacity 2s cubic-bezier(0.0, 0.0, 1.0, 2.0);
+}
+
+footer {
+	position: relative;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	font-size: 16px;
+	font-family: monospace;
+	color: rgb(212, 212, 212);
+}

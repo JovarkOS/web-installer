@@ -1,0 +1,6 @@
+Filesystem      Size  Used Avail Use% Mounted on
+dev             7.8G     0  7.8G   0% /dev
+run             7.8G  1.9M  7.8G   1% /run
+/dev/sda2       224G  143G   80G  65% /
+/dev/sda1        50M  282K   49M   1% /efi
+/dev/sdb1       1.8T  1.7T   85G  96% /run/media/lburlingham/archive
