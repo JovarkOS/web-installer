@@ -6,8 +6,8 @@ require_once '../config.php';
 
 session_start();
 
-if(isset($_GET['lang'])){
-	$_SESSION['lang'] = $_GET['lang'];
+if(isset($_POST['lang'])){
+	$_SESSION['lang'] = $_POST['lang'];
 }
 
 print_r($_SESSION);
@@ -31,7 +31,6 @@ print_r($_SESSION);
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 	<script src="../main.js"></script>
 	<link rel="stylesheet" href="../main.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
 
 </head>
 
@@ -53,7 +52,7 @@ print_r($_SESSION);
 			<div class="col-lg-2 col-md-2 col-sm-1">
 			</div>
 		</div>
-		<form action="/steps/2_packages.php" method="get">
+		<form action="/steps/2_packages.php" method="post">
 			<div class="row">
 				<div class="col-lg-2 col-md-1 col-sm-1">
 				</div>
@@ -96,8 +95,7 @@ print_r($_SESSION);
 									<div class="form-group">
 										<label for="efi_partition_size">Partition Size (MB)</label>
 										<input type="number" class="form-control" id="efi_partition_size"
-											name="efi_partition_size"
-											placeholder="Enter partition size in MB, blank for rest of drive">
+											name="efi_partition_size" placeholder="Enter partition size in MB">
 									</div>
 									<div class="form-group">
 										<label for="root_mout_point">Partition Mount Point</label>
@@ -152,7 +150,8 @@ print_r($_SESSION);
 									<div class="form-group">
 										<label for="root_partition_size">Partition Size (MB)</label>
 										<input type="number" class="form-control" id="root_partition_size"
-											name="root_partition_size" placeholder="100">
+											name="root_partition_size"
+											placeholder="Enter partition size in MB, leave blank to set as the remaining space on the disk">
 									</div>
 									<div class="form-group">
 										<label for="efi_mount_point">Partition Mount Point</label>
