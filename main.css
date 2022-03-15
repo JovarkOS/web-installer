@@ -36,3 +36,8 @@ footer {
 	font-family: monospace;
 	color: rgb(212, 212, 212);
 }
+
+
+.text-no-decoration {
+	text-decoration: none;
+}
