@@ -49,6 +49,97 @@ require_once '../config.php';
 			</div>
 		</div>
 		<div class="row">
+			<div class="col-lg-2 col-md-1 col-sm-1">
+			</div>
+			<div class="col-lg-8 col-md-8 col-sm-10">
+				<p class="text-small text-center">
+					Please select the options from the dropdowns below to create partitions for your system.
+				</p>
+				<div class="accordion" id="partition_selections">
+					<div class="accordion-item bg-dark">
+						<h2 class="accordion-header bg-dark" id="efi_heading">
+							<button class="accordion-button bg-dark text-light" type="button" data-bs-toggle="collapse"
+								data-bs-target="#efi_collapse" aria-expanded="true" aria-controls="efi_collapse">
+								EFI Partition
+							</button>
+						</h2>
+						<div id="efi_collapse" class="accordion-collapse collapse show" aria-labelledby="efi_heading"
+							data-bs-parent="#partition_selections">
+							<div class="accordion-body">
+								<form method="GET">
+									<div class="form-group">
+										<label for="partition_type">Root Drive Selection</label>
+										<select class="form-control" id="drive_path" name="drive_path">
+											<?php
+												// Grab all the drives from the system
+												// get SATA drives
+												foreach (glob("/dev/sd*") as $filename) {
+													echo "<option value='$filename'>$filename</option>";
+												}
+												// get NVMe drives
+												foreach (glob("/dev/nvme*") as $filename) {
+													echo "<option value='$filename'>$filename</option>";
+												}
+												// get eMMC drives
+												foreach (glob("/dev/mmcblk*") as $filename) {
+													echo "<option value='$filename'>$filename</option>";
+												}
+											?>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="partition_type">Partition Type</label>
+										<select class="form-control" id="partition_type" name="partition_type">
+											<option value="ext4">ext4</option>
+											<option value="ext3">ext3</option>
+											<option value="ext2">ext2</option>
+											<option value="xfs">xfs</option>
+											<option value="btrfs">btrfs</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="partition_size">Partition Size</label>
+										<input type="text" class="form-control" id="partition_size"
+											name="partition_size" placeholder="Enter partition size in MB">
+									</div>
+									<div class="form-group">
+										<label for="partition_mount_point">Partition Mount Point</label>
+										<input type="text" class="form-control" id="partition_mount_point"
+											name="partition_mount_point" placeholder="/mnt" value="/mnt">
+									</div>
+									<button type="submit" class="btn btn-primary">Submit</button>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="root_heading">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+								data-bs-target="#data_collapse" aria-expanded="false" aria-controls="data_collapse">
+								Data Partition
+							</button>
+						</h2>
+						<div id="data_collapse" class="accordion-collapse collapse" aria-labelledby="root_heading"
+							data-bs-parent="#partition_selections">
+							<div class="accordion-body">
+								<strong>This is the second item's accordion body.</strong> It is hidden by default,
+								until the collapse plugin adds the appropriate classes that we use to style each
+								element. These classes control the overall appearance, as well as the showing and hiding
+								via CSS transitions. You can modify any of this with custom CSS or overriding our
+								default variables. It's also worth noting that just about any HTML can go within the
+								<code>.accordion-body</code>, though the transition does limit overflow.
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="col-lg-2 col-md-2 col-sm-1">
+			</div>
+
+
+		</div>
+		<div class="row">
 			<div class="col-5"></div>
 			<div class="col-2">
 				<button class="btn btn-primary font-major-mono-display w-100" onclick="fade_out(1);">Packages
