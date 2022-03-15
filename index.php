@@ -45,7 +45,8 @@ print_r($_SESSION);
 		<h1 class="fw-bold">Welcome to the Arch System Installer</h1>
 		<h2 class="font-weight-normal">
 			Click <button class="btn btn-primary fs-monospace" onclick="fade_out(0)">Next <i class="fa fa-arrow-right"
-					aria-hidden="true"></i></button> to get started!
+					aria-hidden="true"></i>
+			</button> to get started!
 		</h2>
 	</div>
 	<footer class="text-center">
