@@ -7,6 +7,18 @@ require_once 'config.php';
 // on the system to install the OS with the selected options and input.
 
 
+// Remove the session variable that was set in the previous step 
+// just incase the user has come back to this step to change their input.
+session_start();
+session_unset();
+session_destroy();
+
+// Start session where the user's input will be stored
+session_start();
+
+
+print_r($_SESSION);
+
 ?>
 
 <!doctype html>
