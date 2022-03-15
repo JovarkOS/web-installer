@@ -12,33 +12,27 @@ function fade_out(current_step) {
 }
 
 function next(current_step) {
-	// get the GET parameters passed in fromt he URL and add them to the next page
-	// These options can then be passed to be processed with the $_GET array in PHP
-	var url = window.location.href;
-	options = url.substring(url.indexOf("?") + 1);
 	switch (current_step) {
 		case 0:
-			// nothing to do for this step
 			location_next = "/steps/1_disks.php";
 			break;
 		case 1:
-			// first step with options to pass onto the next pages
-			location_next = "/steps/2_packages.php" + "?" + options;
+			location_next = "/steps/2_packages.php";
 			break;
 		case 2:
-			location_next = "/steps/3_configure_system.php" + "?" + options;
+			location_next = "/steps/3_configure_system.php";
 			break;
 		case 3:
-			location_next = "/steps/4_configure_users.php" + "?" + options;
+			location_next = "/steps/4_configure_users.php";
 			break;
 		case 4:
-			location_next = "/steps/5_summary.php" + "?" + options;
+			location_next = "/steps/5_summary.php";
 			break;
 		case 5:
-			location_next = "/steps/6_install.php" + "?" + options;
+			location_next = "/steps/6_install.php";
 			break;
 		default:
-			location_next = "/steps/0_error.php" + "?" + options;
+			location_next = "/steps/0_error.php";
 	}
 
 	setTimeout(function () {
