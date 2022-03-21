@@ -1,7 +1,7 @@
 # JovarkOS Web Installer
 Installer frontend on the web for Arch Linux
 
-*Requires PHP 8+. The ability to use make is also helpful*
+*Requires PHP 8+. The ability to use `make` is also helpful, but not required.*
 
 
 Generates an executable shell script for the user to install the custom JovarkOS live image with.
