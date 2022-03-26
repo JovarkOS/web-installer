@@ -7,17 +7,24 @@ session_start();
 
 $_SESSION['kernel_package'] = "";
 $_SESSION['text_editor'] = "";
+$_SESSION['additional_packages'] = "";
 
 
 if(isset($_POST['text_editor'])) {
 	foreach($_POST['text_editor'] as $option) {
-		$_SESSION['text_editor'] = $_SESSION['text_editor'] . $option;
+		$_SESSION['text_editor'] = $_SESSION['text_editor']. "," . $option;
 	}
 }
 
 if(isset($_POST['kernel_package'])) {
 	foreach($_POST['kernel_package'] as $option) {
-		$_SESSION['kernel_package'] = $_SESSION['text_editor'] . $option;
+		$_SESSION['kernel_package'] = $_SESSION['text_editor']. "," . $option;
+	}
+}
+
+if(isset($_POST['additional_packages'])) {
+	foreach($_POST['additional_packages'] as $option) {
+		$_SESSION['additional_packages'] = $_SESSION['additional_packages'] . "," . $option;
 	}
 }
 
@@ -46,13 +53,13 @@ print_r($_SESSION);
 
 <body id="body" onload="fade_in()">
 	<div class="text-center mt-5">
-		<h1 class="font-weight-normal">Step 2: Packages to install</h1>
+		<h1 class="font-weight-normal">Step 3: Configure System Elements</h1>
 		<p>
-			Please choose the packages you would like to install on your system.
+			All elements on this page are required.
 		</p>
 	</div>
 	<div class="container-fluid">
-		<form action="/steps/3_configure_system.php" method="get">
+		<form action="/steps/4_configure_users.php" method="post">
 			<div class="row">
 				<div class="col-lg-2 col-md-1 col-sm-1"></div>
 				<div class="col-lg-8 col-md-10 col-sm-10">
@@ -63,7 +70,7 @@ print_r($_SESSION);
 									<button class="accordion-button bg-dark text-white" type="button"
 										data-bs-toggle="collapse" data-bs-target="#hostname" aria-expanded="true"
 										aria-controls="hostname">
-										Hostname
+										Hostname:
 									</button>
 								</h2>
 								<div id="hostname" class="accordion-collapse collapse"
@@ -81,35 +88,6 @@ print_r($_SESSION);
 									</div>
 								</div>
 							</div>
-							<div class="accordion-item bg-dark border border-secondary">
-								<h2 class="accordion-header bg-dark" id="text_editors_packages_heading">
-									<button class="accordion-button bg-dark text-white" type="button"
-										data-bs-toggle="collapse" data-bs-target="#text_editor_packages"
-										aria-expanded="true" aria-controls="text_editor_packages">
-										Text editors:
-									</button>
-								</h2>
-								<div id="text_editor_packages" class="accordion-collapse collapse"
-									aria-labelledby="text_editors_packages_heading"
-									data-bs-parent="#text_editor_packages">
-									<div class="accordion-body">
-										<?php
-											$query = shell_exec("pacman -Ss 'text editor' | grep 'core/\|extra/\|community/'");
-											
-											$des = preg_split("#[\r\n]+#", $query);
-											array_pop($des);
-											foreach ($des as $de) {
-												$de_package_name = substr($de, 0, strpos($de, " "));
-												echo '<input class="form-check-input" type="checkbox" value="'. $de_package_name . '" id="'. $de_package_name . '" name="text_editor">';
-												echo '<label class="form-check-label" for="'. $de_package_name . '">';
-													echo '<span class="text-monospace">'. $de . '</span>';
-												echo '</label>';
-												echo '<br>';
-											}
-										?>
-									</div>
-								</div>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -119,7 +97,7 @@ print_r($_SESSION);
 				<div class="col-5"></div>
 				<div class="col-2">
 					<button class="btn btn-primary font-major-mono-display mt-3" type="submit"
-						onclick="fade_out(3);">System Configuration
+						onclick="fade_out(3);">User Configuration
 						<i class="fa fa-arrow-right" aria-hidden="true"></i>
 					</button>
 				</div>

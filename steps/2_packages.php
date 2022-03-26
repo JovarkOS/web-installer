@@ -2,10 +2,9 @@
 
 require_once '../config.php';
 require_once '../functions.php';
+// Goal: Get input from the user about their system with scraped options from basic
+// system info and generate a executable .sh file to be run on the system to install the system.
 
-// Goal: Get input from the user about their system with scraped options from basic system info and generate a executable .sh file to be run on the system to install the system.
-
-session_start();
 
 $_SESSION['efi_mount_point'] = "";
 $_SESSION['efi_drive_path'] = "";
@@ -14,6 +13,10 @@ $_SESSION['root_mount_point'] = "";
 $_SESSION['root_drive_path'] = "";
 $_SESSION['root_partition_size'] = "";
 $_SESSION['root_partition_type'] = "";
+
+
+session_start();
+
 
 if(isset($_POST['efi_mount_point'])){
 	$_SESSION['efi_mount_point'] = $_POST['efi_mount_point'];
@@ -47,6 +50,7 @@ if(isset($_POST['root_partition_size']) && $_POST['root_partition_size'] != ""){
 if(isset($_POST['root_partition_type'])){
 	$_SESSION['root_partition_type'] = $_POST['root_partition_type'];
 }
+
 print_r($_SESSION);
 
 

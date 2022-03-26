@@ -1,13 +1,17 @@
 <?php
 
 require_once '../config.php';
+require_once '../functions.php';
 
-// Goal: Get input from the user about their system with scraped options from basic system info and generate a executable .sh file to be run on the system to install the system.
+// Goal: Get input from the user about their system with scraped options from basic
+// system info and generate a executable .sh file to be run on the system to install the system.
 
 session_start();
 
-if(isset($_POST['lang'])){
-	$_SESSION['lang'] = $_POST['lang'];
+
+// Use get for this step only - use URL parameters for user's convenience
+if(isset($_GET['lang'])){
+	$_SESSION['lang'] = $_GET['lang'];
 }
 
 print_r($_SESSION);
@@ -98,9 +102,9 @@ print_r($_SESSION);
 											name="efi_partition_size" placeholder="Enter partition size in MB">
 									</div>
 									<div class="form-group">
-										<label for="root_mout_point">Partition Mount Point</label>
-										<input type="text" class="form-control" id="root_mout_point"
-											name="root_mout_point" placeholder="/mnt/efi" value="/mnt/efi">
+										<label for="root_mount_point">Partition Mount Point</label>
+										<input type="text" class="form-control" id="root_mount_point"
+											name="root_mount_point" placeholder="/mnt/efi" value="/mnt/efi">
 									</div>
 								</div>
 							</div>
